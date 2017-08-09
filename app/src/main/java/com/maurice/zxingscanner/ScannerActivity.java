@@ -1,5 +1,6 @@
 package com.maurice.zxingscanner;
 
+import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,6 +11,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 
 import com.maurice.qrcode.QRCodeScanner;
 import com.maurice.qrcode.Result;
@@ -126,5 +128,8 @@ public class ScannerActivity extends AppCompatActivity implements SurfaceHolder.
         }
         String str = rawResult.getText();
         Log.d("Scanner", str);
+        Intent intent = new Intent(this, ScannerResultActivity.class);
+        intent.putExtra("msg", str);
+        startActivity(intent);
     }
 }
